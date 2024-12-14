@@ -1,0 +1,15 @@
+mongoApp:
+  namespace: helm-namespace-prod
+
+backend:
+  namespace: helm-namespace-prod
+
+pv:
+  name: mongo-pv-helm-prod
+  namespace: helm-namespace-prod
+  hostPath:
+    path: /data/mongo-prod
+pvc:
+  name: mongo-pvc-helm-prod
+  namespace: helm-namespace-prod
+

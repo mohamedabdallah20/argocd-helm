@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.mongoApp.namespace}}
+  name: {{  .Values.mongoApp.name}}
+  labels:
+    app: {{  .Values.mongoApp.name}}
+spec:
+  revisionHistoryLimit: 1
+  replicas: {{  .Values.mongoApp.replicas}}
+  selector:
+    matchLabels:
+      app: {{  .Values.mongoApp.name}}
+  template:
+    metadata:
+      labels:
+        app: {{  .Values.mongoApp.name}}
+    spec:
+      containers:
+      - name: {{  .Values.mongoApp.name}}
+        image: {{  .Values.mongoApp.image}}
+        imagePullPolicy: {{  .Values.mongoApp.imagePullPolicy}}
+        ports:
+        - containerPort: {{  .Values.mongoApp.port}}
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-storage
+      volumes:
+      - name: mongo-storage
+        persistentVolumeClaim:
+          claimName: {{.Values.pvc.name}}
+      

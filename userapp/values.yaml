@@ -1,0 +1,26 @@
+mongoApp:
+  name: mongodb
+  port: 27017
+  namespace: helm-namespace
+  image: mongo
+  imagePullPolicy: Never
+  replicas: 1
+
+backend:
+  name: backend
+  image: mohamedabdallah0/node-sqlite-app:latest
+  port: 3000
+  namespace: helm-namespace
+  replicas: 2
+  mongouri: mongodb://mongodb:27017/myapp
+
+pv:
+  namespace: helm-namespace
+  name: mongo-pv-helm
+  hostPath:
+    path: /data/mongo
+  size: 2Gi
+pvc:
+  namespace: helm-namespace
+  name: mongo-pvc-helm
+  size: 2Gi

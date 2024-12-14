@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: {{.Values.backend.namespace}}
+  name:  {{.Values.backend.name}}
+  labels:
+    app: {{.Values.backend.name}}
+spec:
+  selector:
+    app:  {{.Values.backend.name}}
+  ports:
+  - port:  {{.Values.backend.port}}
+    targetPort:  {{.Values.backend.port}}

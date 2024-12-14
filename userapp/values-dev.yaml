@@ -1,0 +1,15 @@
+mongoApp:
+  namespace: helm-namespace-dev
+
+backend:
+  namespace: helm-namespace-dev
+
+pv:
+  name: mongo-pv-helm-dev
+  namespace: helm-namespace-dev
+  hostPath:
+    path: /data/mongo-dev
+pvc:
+  name: mongo-pvc-helm-dev
+  namespace: helm-namespace-dev
+
