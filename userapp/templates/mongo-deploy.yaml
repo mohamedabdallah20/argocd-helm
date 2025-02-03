@@ -19,7 +19,7 @@ spec:
       containers:
       - name: {{  .Values.mongoApp.name}}
         image: {{  .Values.mongoApp.image}}
-        imagePullPolicy: {{  .Values.mongoApp.imagePullPolicy}}
+        # imagePullPolicy: {{  .Values.mongoApp.imagePullPolicy}}
         ports:
         - containerPort: {{  .Values.mongoApp.port}}
         volumeMounts:
